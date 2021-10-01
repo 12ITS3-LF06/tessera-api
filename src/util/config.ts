@@ -4,10 +4,11 @@ import { enumToArray } from './enumToArray';
 import { ConfigModuleOptions } from '@nestjs/config';
 
 const ENV_FILE_PATH = process.env.ENV_FILE_PATH || '.env';
+export const SOCKET_PORT = 81;
 
 export interface Config {
   NODE_ENV: Environment;
-  PORT: number;
+  HTTP_PORT: number;
 }
 
 export const setupConfig: ConfigModuleOptions = {
@@ -17,6 +18,6 @@ export const setupConfig: ConfigModuleOptions = {
     NODE_ENV: Joi.string()
       .valid(...enumToArray(Environment))
       .default(Environment.DEVELOPMENT),
-    PORT: Joi.number().port().default(80),
+    HTTP_PORT: Joi.number().port().default(80),
   }),
 };
