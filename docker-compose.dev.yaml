@@ -23,6 +23,14 @@ services:
       - MARIADB_USER=tessera
       - MARIADB_PASSWORD=tessera
 
+  redis:
+    image: redis:6.2
+    restart: always
+    ports:
+      - 127.0.0.1:6379:6379
+    networks:
+      - tessera
+
   phpmyadmin:
     image: phpmyadmin:5.1
     restart: always
